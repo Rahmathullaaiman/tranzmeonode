@@ -20,7 +20,7 @@ router.post('/user/login',Usercontroller.login)
 router.get('/user/get',jwtmiddleware,Usercontroller.getAllUsers)
 
 //4)get user details
-router.get('/user/get/id',jwtmiddleware,Usercontroller.getUser)
+router.get('/user/get/:id',jwtmiddleware,Usercontroller.getUser)
 
 
 

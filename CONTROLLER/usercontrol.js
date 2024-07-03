@@ -65,12 +65,15 @@ exports.getAllUsers = async (req, res) => {
 
 //get user details
 exports.getUser = async (req, res) => {
+    const { id } = req.params;
 
-    const {id} = req.params
     try {
-        const getuser = await users.find({_id:id});
+        const getuser = await users.findById(id);
+        if (!getuser) {
+            return res.status(404).json('User not found.');
+        }
         res.status(200).json(getuser);
     } catch (error) {
         res.status(500).json(error);
     }
-}
+};
